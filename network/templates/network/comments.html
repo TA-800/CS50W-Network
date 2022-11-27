@@ -1,0 +1,96 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% load networktags %}
+
+{% block body %}
+    {% csrf_token %}
+
+    <div id="post_comments_container">
+        <!--Post container starts here-->
+        <div id="post_container"
+        data-id={{post.id}} data-likes={{ post.like_num }} data-dislikes={{ post.dislike_num }}
+        data-liked={{ post|accessLikes:user }}
+        >
+            <!--Post likes/dislikes div starts here-->
+            <!--Children[0]-->
+            {% if user.is_authenticated %}
+                <div id="post_Metadata_signedin">
+                
+                </div>
+            {% else %}
+                <div id="post_Metadata_signedout">
+                    <div></div>
+                    <div>num w signed out</div>
+                    <div></div>
+                </div>
+            {% endif %}
+            <!--Post likes/dislikes div ends here-->
+
+            <!--Post data div starts here-->
+            <!--Children[1]-->
+            <div id="post_data">
+                <!--Children[0]-->
+                <div id="post_headers">
+                    <div id="post_user"><strong>
+                    <a href={% url "profile" post.user %}> {{ post.user }} </a>
+                    </strong></div>
+
+                    <div id="post_headers_buttons">
+                        
+                        {% if user.is_authenticated %}
+
+                            {% if user == post.user %}
+                                     
+                                <button id="edit_post_button" class="btn btn-outline-success">Edit</button>
+                                <button id="delete_post_button" class="btn btn-outline-danger">Delete</button>
+
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <!--Children[1]-->
+                <div id="post_text">{{ post.content }}</div>
+
+                <!--Children[2]-->
+                <div id="post_timestamp">{{ post.timestamp }}</div>
+            </div>
+            <!--Post data div ends here-->
+
+        </div>
+        <!--Post container ends here-->
+        
+        <!--Comment container (comments + new comment) starts here-->
+        <div id="comments_container">
+            
+            <!--Comments start here-->
+            {% for comment in comments %}
+                <div id="comment_container" data-id={{comment.id}}>
+                    <div>
+                        <strong>{{ comment.user }}</strong>: {{ comment.content }}
+                    </div>
+                    {% if user == comment.user %}
+                        <button id="comment_delete" class="btn btn-outline-danger btn-sm">Delete</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <!--Comments end here-->
+
+            <!--New comment starts here-->
+            <div id="new_comment_container">
+                <div id="new_comment_textarea_div">
+                    <textarea id="new_comment_textarea" placeholder="Write a comment..." rows="1" cols="155"></textarea>
+                </div>
+                <div id="new_comment_buttons">
+                    <button id="new_comment_submit" class="btn btn-outline-primary">Post</button>
+            </div>
+            <!--New comment ends here-->
+
+        </div>
+        <!--Comment container ends here-->
+    
+    </div>
+
+    <script src="{% static 'network/comments.jsx' %}" type="text/babel"></script>
+{% endblock %}

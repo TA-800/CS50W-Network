@@ -1,0 +1,188 @@
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#full_body_container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 10px;
+}
+
+#users_container {
+    background-color: aliceblue;
+    display: grid;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    height:fit-content;
+    row-gap: 2em;
+}
+
+#users_container > div {
+    margin: 10px;
+}
+
+#users_list {
+    display: grid;
+    row-gap: 1em;
+    padding-left: 0.5em;
+}
+
+#all_posts_container {
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-right: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+#all_posts_container > div {
+    margin: 10px;
+}
+
+#all_posts_list_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+}
+
+#post_container {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    max-height: 10em;
+
+    animation-name: fadeout;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+#post_container > div {
+    margin: 10px;
+}
+
+#post_metadata > div {
+    display: grid;
+    place-items: center;
+}
+
+#post_headers {
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+
+#post_headers_buttons {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 0.25em;
+    justify-content: end;
+}
+
+#post_timestamp {
+    color: gray;
+}
+
+#post_Metadata_signedout {
+    display: grid;
+    place-items: center;
+}
+
+#edit_post_buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 10px;
+    width: 10em;
+    justify-content: safe;
+}
+
+#edit_post_container {
+    display: grid;
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    padding: 10px;
+    row-gap: 1em;
+
+    animation-name: fadein;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+#new_post_container {
+    display: grid;
+    background-color: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+#new_post_container > div {
+    padding: 0.5em;
+}
+
+#default {
+    color: black;
+    font-size: 32px;
+}
+
+#liked {
+    border: 1px dashed rgb(0, 0, 0, 0.25);
+    background-color: rgba(255, 0, 0, 0.05);
+    color: blue;
+    font-size: 36px;
+}
+
+#disliked {
+    border: 1px dashed rgb(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 255, 0.05);
+    color: red;
+    font-size: 36px;
+}
+
+#following_header {
+    display:grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1em;
+    align-items: center;
+    margin: 1em;
+}
+
+#following_container {
+    display: grid;
+    margin: 1em;
+    row-gap: 1em;
+}
+
+#post_fullview_container {
+    display: none;
+}
+
+#post_comments_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+    margin: 1em;
+}
+
+#comments_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1em;
+    margin: 1em;
+}
+
+#new_comment_container {
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+}
+
+#comment_container {
+    border: 1px solid lightgray;
+    padding: 0.5em;
+}
