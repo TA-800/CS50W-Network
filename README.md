@@ -18,3 +18,5 @@ Mini twitter-like social network website built with **Django** and **React** [[ 
 * View users' profile pages
 
 Built with Django + React/JSX :heart:
+
+###### Unfortunately, SECRET_KEY was exposed the whole time. Shifted everything into a fresh new branch first not knowing that doesn't get rid of your commit history and THEEENN realized the usefulness of .gitignore and .env files.  	:disappointed: 
